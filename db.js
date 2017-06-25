@@ -1,14 +1,23 @@
-const config = {
-    user: 'node',
-    password: 'node',
-    server: 'localhost\\sqlexpress', // You can use 'localhost\\instance' to connect to named instance
-    database: 'node',
- 
-    options: {
-        encrypt: false // Use this if you're on Windows Azure 
-    }
-}
+var Sequelize = require('sequelize');
 
-const sql = require('mssql')
+const sequelize = new Sequelize('node', 'node', 'node', {
+  host: 'localhost',
+  dialect: 'mssql',
 
-module.exports = { sql: sql, config: config }
+  pool: {
+    max: 5,
+    min: 0,
+    idle: 10000
+  },
+  dialectOptions:{
+      instanceName: "sqlexpress"
+  }
+});
+
+var db = {};
+
+db.name = sequelize.import(__dirname + '/models/name.js');
+db.sequelize = sequelize;
+db.Sequelize = Sequelize;
+
+module.exports = db;

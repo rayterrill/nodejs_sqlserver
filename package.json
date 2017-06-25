@@ -12,6 +12,7 @@
     "express": "^4.15.3",
     "mssql": "^4.0.4",
     "request": "^2.81.0",
+    "sequelize": "^4.2.0",
     "tedious": "^2.0.0"
   }
 }

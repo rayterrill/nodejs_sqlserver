@@ -5,18 +5,15 @@ var app = express();
 var db = require('./db.js');
 
 app.get('/nodejs_sqlserver', function (req, res) {
-	db.sql.connect(db.config).then(pool => {
-    	return pool.request()
-		.query('select id, name from dbo.names')
-	}).then(result => {
-		res.send(result);
-	}).catch(err => {
-		res.send('something bad just happened' + err);
-	})
- 
-	db.sql.on('error', err => {
-		// ... error handler 
-	})
+	var body = { name: 'boomshakalaka' };
+	db.name.create(body).then(body => {
+		res.send(body);
+	});
 });
 
-app.listen(process.env.PORT);
+// change to db.sequelize.sync({force: true}) to force a model/schema change
+db.sequelize.sync().then(function() {
+	app.listen(process.env.PORT, function() {
+		console.log('Express listening on port ' + process.env.PORT + '!');
+	});
+});
