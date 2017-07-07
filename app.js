@@ -22,9 +22,9 @@ app.use(bodyParser.json());
 
 //get all the names
 app.get(deployPath + '/names', function (req, res) {
-	db.name.findAll().then(body => {
-		res.send(body);
-	});
+   db.name.findAll().then(body => {
+      res.send(body);
+   });
 });
 
 //create a new name
@@ -98,6 +98,6 @@ app.delete(deployPath + '/names/:id', function (req, res) {
 
 // change to db.sequelize.sync({force: true}) to force a model/schema change
 db.sequelize.sync().then(function() {
-	app.listen(PORT, function() {
-	});
+   app.listen(PORT, function() {
+   });
 });
