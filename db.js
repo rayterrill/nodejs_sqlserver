@@ -1,17 +1,20 @@
 var Sequelize = require('sequelize');
 
-const sequelize = new Sequelize('node', 'node', 'node', {
-  host: 'localhost',
+//update parameters below
+const sequelize = new Sequelize('DATABASE_NAME', 'USER_NAME', 'PASSWORD', {
+  host: 'popsql2k16t',
   dialect: 'mssql',
+  
+  // disable logging; default: console.log
+  logging: false,
 
+  /*
   pool: {
     max: 5,
     min: 0,
     idle: 10000
-  },
-  dialectOptions:{
-      instanceName: "sqlexpress"
   }
+  */
 });
 
 var db = {};
