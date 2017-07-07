@@ -62,23 +62,25 @@ app.get(deployPath + '/names/:id', function (req, res) {
 
 //update a name
 app.put(deployPath + '/names/:id', function (req, res) {
-   db.name.find( { where: { id: req.params.id} } )
-      .then(function(name) {
-         if (name) {
-            name.name = req.body.name;
-            name.save()
-               .then(function(name) {
-                  res.status(200).json(name);
-               })
-               .catch(function(err) {
-                  res.status(404).json(err);
-               });
-         } else {
-            sendJsonResponse(res, 404, {
-               message: "No items found with specified locationid"
-            });
-         }   
-      });
+   db.name.find({
+      where: { id: req.params.id}
+   })
+   .then(function(name) {
+      if (name) {
+         name.name = req.body.name;
+         name.save()
+         .then(function(name) {
+            res.status(200).json(name);
+         })
+         .catch(function(err) {
+            res.status(404).json(err);
+         });
+      } else {
+         sendJsonResponse(res, 404, {
+            message: "No items found with specified locationid"
+         });
+      }   
+   });
 });   
 
 //delete a name
@@ -86,12 +88,12 @@ app.delete(deployPath + '/names/:id', function (req, res) {
    db.name.destroy({
       where: { id: req.params.id }
    })
-      .then(function() {
-         res.sendStatus(204);
-      })
-      .catch(function() {
-         res.status(500).json('Error encountered on delete');
-      });
+   .then(function() {
+      res.sendStatus(204);
+   })
+   .catch(function() {
+      res.status(500).json('Error encountered on delete');
+   });
 });
 
 // change to db.sequelize.sync({force: true}) to force a model/schema change
