@@ -2,7 +2,7 @@ var Sequelize = require('sequelize');
 
 //update parameters below
 const sequelize = new Sequelize('DATABASE_NAME', 'USER_NAME', 'PASSWORD', {
-  host: 'popsql2k16t',
+  host: 'DATABASE_SERVER',
   dialect: 'mssql',
   
   // disable logging; default: console.log
