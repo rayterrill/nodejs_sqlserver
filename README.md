@@ -3,7 +3,7 @@ Example code for using NodeJS, Express, and Sequelize to build an API against a 
 
 ### Prerequisites
 * IIS
-* IIS ASP.NET
+* IIS ASP.NET 4.5
 * IIS URL Rewriting module
 * Node.JS
 * IISNode
@@ -15,4 +15,5 @@ Example code for using NodeJS, Express, and Sequelize to build an API against a 
 npm install
 ```
 3. Update db.js with your database information (database name, username, and password). The db user must have permissions to create objects in the target database.
+4. Create an iisnode directory inside the cloned directory, and give "IIS AppPool\DefaultAppPool" (or whatever you App Pool Identity is) read/write access to that directory to get logging info.
 
