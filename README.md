@@ -1,6 +1,13 @@
 # nodejs_sqlserver Demo Setup
 Example code for using NodeJS, Express, and Sequelize to build an API against a SQL Server table. This solution works both as a standalone app (node app.js), and via iisnode on Windows.
 
+### Prerequisites
+* IIS
+* IIS ASP.NET
+* IIS URL Rewriting module
+* Node.JS
+* IISNode
+
 ### Steps to Use
 1. Clone repo to the desired location
 2. Pull the require modules
